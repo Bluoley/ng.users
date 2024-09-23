@@ -1,0 +1,41 @@
+<section>
+  <div class="flex content-center justify-between mt-5">
+    <h3 class="text-2xl font-bold ml-4">{{ data.type }} User</h3>
+    <button mat-button class="mr-4" (click)="closeDialog()">
+      <mat-icon class="text-2xl" fontSet="material-symbols-outlined"
+        >close</mat-icon
+      >
+    </button>
+  </div>
+  <form class="p-4 form-w" [formGroup]="userForm">
+    <mat-form-field class="w-full">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="nameUser" />
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>First Last Name</mat-label>
+      <input matInput formControlName="firstLastNameUser" />
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Second Last Name</mat-label>
+      <input matInput formControlName="secondLastNameUser" />
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Address</mat-label>
+      <input matInput formControlName="addressUser" />
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Phone</mat-label>
+      <input matInput formControlName="phoneUser" maxlength="10"/>
+    </mat-form-field>
+    <button
+      mat-button
+      type="button"
+      [disabled]="!userForm.valid"
+      class="w-full bg-black text-white h-12"
+      (click)="submit()"
+    >
+      {{ data.type }}
+    </button>
+  </form>
+</section>

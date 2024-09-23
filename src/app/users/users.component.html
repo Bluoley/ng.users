@@ -1,0 +1,77 @@
+<section>
+  <h1 class="text-5xl font-bold pt-10 pb-2 border-b border-gray-300">Users</h1>
+  <div class="mt-6 flex content-center justify-between">
+    <button mat-button class="add-button" (click)="editOrAddUser('Add')">
+      <mat-icon fontSet="material-symbols-outlined">add_circle</mat-icon> Add
+      User
+    </button>
+    <mat-form-field  class="w-1/4">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" />
+    </mat-form-field>
+  </div>
+  <table mat-table [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="idUser">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+      <td mat-cell *matCellDef="let element">{{ element.idUser }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nameUser">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.nameUser }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="firstLastNameUser">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>First Last Name</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.firstLastNameUser }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="secondLastNameUser">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>
+        Second Last Name
+      </th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.secondLastNameUser }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="addressUser">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+      <td mat-cell *matCellDef="let element">{{ element.addressUser }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="phoneUser">
+      <th mat-header-cell *matHeaderCellDef>Phone</th>
+      <td mat-cell *matCellDef="let element">{{ element.phoneUser }}</td>
+    </ng-container>
+    <ng-container matColumnDef="tools">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button class="size-10 mr-2" (click)="editOrAddUser('Edit', element)">
+          <mat-icon
+            class="hover:text-indigo-600"
+            fontSet="material-symbols-outlined"
+            >edit_note</mat-icon
+          >
+        </button>
+        <button class="size-10" (click)="openDeleteUser(element)">
+          <mat-icon
+            class="hover:text-indigo-600"
+            fontSet="material-symbols-outlined"
+            >delete_forever</mat-icon
+          >
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  <mat-paginator
+    [length]="dataLength"
+    [pageSize]="15"
+    aria-label="Select page"
+  ></mat-paginator>
+</section>
